@@ -26,12 +26,16 @@ function read_var() {
   echo $(head -n 1 $1)
 }
 
+# Export the environment variables which are passed to the compile script.
+# The application environment variales are stored as files in a folder.
+# This function (supplied by Heroku) allows for you to take those environment
+# variables and actuall export them so the rest of the build can use them.
 function export_env_dir() {
   env_dir=$1
   whitelist_regex=${2:-'S3_ACCESS_KEY|S3_SECRET'}
   blacklist_regex=${3:-'^(PATH|GIT_DIR|CPATH|CPPATH|LD_PRELOAD|LIBRARY_PATH)$'}
   if [ -d "$env_dir" ]; then
-    echo "Found Environment"
+    echo "Found Environment Variables" | indent
     for e in $(ls $env_dir); do
       echo "$e" | grep -E "$whitelist_regex" | grep -qvE "$blacklist_regex" &&
       export "$e=$(cat $env_dir/$e)"
