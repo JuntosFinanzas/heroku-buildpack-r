@@ -161,6 +161,18 @@ source "$LP_DIR/bin/r_environment.sh"
 # install dependencies from CRAN
 echo "Executing init.r script" | indent
 
+echo ======================================================================
+
+# print out environment (for debugging builds)
+( set -o posix; set )
+
+echo ======================================================================
+
+ls -ahlR /app
+
+echo ======================================================================
+
+
 # set the CRAN mirror and run the init.r program
 # NOTE: output can't be indented unfortunately
 /app/vendor/R/bin/R --no-save -s <<RPROG 2>&1 | indent
@@ -199,6 +211,13 @@ cp -r /app/vendor/R $VENDOR_DIR
 #   |- vendor    # <= $VENDOR_DIR
 #      |- R
 #
+
+echo ======================================================================
+
+ls -ahlR /app
+
+echo ======================================================================
+
 
 # copy to the cache directory
 echo "$R_VERSION" > "$CACHE_DIR/.r-version"
