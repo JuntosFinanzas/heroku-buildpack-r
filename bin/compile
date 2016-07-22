@@ -33,6 +33,7 @@ unset GIT_DIR
 BUILDPACK_DIR="$(dirname $(dirname $0))"
 BUILD_DIR=$1
 CACHE_DIR=$2
+ENV_VAR_DIR=$3
 
 # ensure exist
 mkdir -p $BUILD_DIR
