@@ -172,6 +172,7 @@ ls -ahlR /app
 
 echo ======================================================================
 
+rm /app/.apt/usr/lib/gcc/x86_64-linux-gnu/4.8/*.a
 
 # set the CRAN mirror and run the init.r program
 # NOTE: output can't be indented unfortunately
