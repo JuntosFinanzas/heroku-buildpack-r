@@ -46,6 +46,8 @@ unset GIT_DIR
 BUILDPACK_DIR="$(dirname $(dirname $0))"
 BUILD_DIR=$1
 CACHE_DIR=$2
+
+echo "Exporting environment" | indent
 export_env_dir $3
 
 # ensure exist
