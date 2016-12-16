@@ -108,7 +108,6 @@ then
   rm -rf $CACHE_DIR/vendor/R/lib/R/library/ebal     || true
   rm -rf $CACHE_DIR/vendor/R/lib/R/library/pseudo   || true
   rm -rf $CACHE_DIR/vendor/R/lib/R/library/npsurv   || true
-  rm -rf $CACHE_DIR/vendor/R/lib/R/library/rms      || true
   rm -rf $CACHE_DIR/vendor/R/lib/R/library/scales   || true
 
   ## DANTE </end hack>
