@@ -105,10 +105,12 @@ then
   ## DANTE <start hack>
   # clear out specific libraries from the cache in order to reduce the slug size without a full clear
 
-  rm -rf $CACHE_DIR/vendor/R/lib/R/library/ebal     || true
-  rm -rf $CACHE_DIR/vendor/R/lib/R/library/pseudo   || true
-  rm -rf $CACHE_DIR/vendor/R/lib/R/library/npsurv   || true
-  rm -rf $CACHE_DIR/vendor/R/lib/R/library/scales   || true
+  rm -rf $CACHE_DIR/vendor/R/lib/R/library/ebal           || true
+  rm -rf $CACHE_DIR/vendor/R/lib/R/library/pseudo         || true
+  rm -rf $CACHE_DIR/vendor/R/lib/R/library/npsurv         || true
+  rm -rf $CACHE_DIR/vendor/R/lib/R/library/scales         || true
+  rm -rf $CACHE_DIR/vendor/R/lib/R/library/nycflights13   || true
+  rm -rf $CACHE_DIR/vendor/R/lib/R/library/Lahman         || true
 
   ## DANTE </end hack>
 
@@ -207,6 +209,13 @@ RPROG
 # TODO: determine whether the R script failed
 echo
 echo "R $R_VERSION successfully installed" | indent
+
+
+# <dante hack> remove uneeded data
+rm -rf /app/vendor/R/lib/R/library/nycflights13   || true
+rm -rf /app/vendor/R/lib/R/library/Lahman         || true
+# </dante hack>
+
 
 #
 # need to copy binaries back to the build directory so that any
