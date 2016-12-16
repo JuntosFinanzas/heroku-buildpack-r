@@ -101,6 +101,18 @@ then
 
   # copy from cache to the build directory
   echo "Retrieving R binaries and packages from cache" | indent
+
+  ## DANTE <start hack>
+  # clear out specific libraries from the cache in order to reduce the slug size without a full clear
+
+  rm -rf $CACHE_DIR/vendor/R/lib/R/library/ebal     || true
+  rm -rf $CACHE_DIR/vendor/R/lib/R/library/pseudo   || true
+  rm -rf $CACHE_DIR/vendor/R/lib/R/library/npsurv   || true
+  rm -rf $CACHE_DIR/vendor/R/lib/R/library/rms      || true
+  rm -rf $CACHE_DIR/vendor/R/lib/R/library/scales   || true
+
+  ## DANTE </end hack>
+
   cp -r $CACHE_DIR/vendor $BUILD_DIR
 
 else
